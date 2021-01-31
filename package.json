@@ -1,0 +1,37 @@
+{
+  "name": "daraja-nodejs",
+  "version": "1.0.0",
+  "description": "A simple node project to use daraja API",
+  "main": "index.js",
+  "scripts": {
+    "start":"nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/einbulinda/daraja-nodejs.git"
+  },
+  "keywords": [
+    "MPesa",
+    "Daraja",
+    "Safaricom",
+    "Lipa",
+    "Na",
+    "Mpesa",
+    "MPesa",
+    "API",
+    "API"
+  ],
+  "author": "Einstein Bulinda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/einbulinda/daraja-nodejs/issues"
+  },
+  "homepage": "https://github.com/einbulinda/daraja-nodejs#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.14",
+    "nodemon": "^2.0.7",
+    "request": "^2.88.2"
+  }
+}
