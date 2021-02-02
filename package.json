@@ -1,25 +1,27 @@
 {
   "name": "daraja-nodejs",
   "version": "1.0.0",
-  "description": "A simple node project to use daraja API",
+  "description": "Practice on using of Mpesa daraja API to an ecommerce site",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon app.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/einbulinda/daraja-nodejs.git"
   },
   "keywords": [
-    "MPesa",
-    "Daraja",
+    "daraja",
+    "Mpesa",
+    "M-Pesa",
     "Safaricom",
     "Lipa",
-    "Na",
+    "na",
     "Mpesa",
-    "MPesa",
-    "API",
-    "API"
+    "Paybill",
+    "node",
+    "Einstein",
+    "Bulinda"
   ],
   "author": "Einstein Bulinda",
   "license": "ISC",
