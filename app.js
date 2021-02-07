@@ -1,5 +1,5 @@
 const express = require("express");
-var request = require("request");
+const request = require("request");
 const app = express();
 
 // routes
@@ -7,17 +7,56 @@ app.get("/", (req, res) => {
   res.send("You're home. Welcome!");
 });
 
-app.get("/access_token", (req, res) => {
-  //access token
 
-  var request = require("request"),
-    consumer_key = "k4GSFax0gdSONmQpuAnXZde23fsHuGt2",
-    consumer_secret = "BhSJBDUmIwlup98h",
-    url =
+
+app.get("/access_token",access, (req, res) => {
+  res.status(200).json({access_token:req.access_token})
+});
+
+app.get('/register', access, (req, resp)=>{
+    let url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl"
+    let auth = "Bearer " + req.access_token;
+
+    request({
+        url: url,
+        method:"POST",
+        headers:{
+            "Authorization": auth
+        },
+        json:{
+            "ShortCode": "174379",
+            "ResponseType": "Complete",
+            "ConfirmationURL": "https://8000-gold-mouse-6vrfrv7i.ws-eu03.gitpod.io/confirmation",
+            "ValidationURL": "https://8000-gold-mouse-6vrfrv7i.ws-eu03.gitpod.io/validation_url"
+        }
+    },
+    function(error, response, body){
+        if(error){console.log(error)}
+        resp.status(200).json(body)
+    }
+    )    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+function access(req, res, next){
+//access token  
+   let  consumer_key = "k4GSFax0gdSONmQpuAnXZde23fsHuGt2";
+   let  consumer_secret = "BhSJBDUmIwlup98h";
+   let url =
       "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
-  auth =
+   let auth =
     "Basic " +
-    new Buffer.from(consumer_key + ":" + consumer_secret).toString("base64");
+    new Buffer(consumer_key + ":" + consumer_secret).toString("base64");
 
   request(
     {
@@ -26,11 +65,17 @@ app.get("/access_token", (req, res) => {
         Authorization: auth,
       },
     },
-    function (error, response, body) {
+    (error, response, body)=> {
       // TODO: Use the body object to extract OAuth access token
+      if(error){
+          console.log(error)
+      } else{
+          req.access_token = JSON.parse(body).access_token;
+          next();
+      }
     }
   );
-});
+}
 
 // listen
 const PORT = 8000;
